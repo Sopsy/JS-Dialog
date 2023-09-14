@@ -1,0 +1,105 @@
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+dialog[open] ~ dialog::backdrop {
+    background-color: transparent;
+    backdrop-filter: initial;
+    -webkit-backdrop-filter: initial;
+}
+
+dialog.confirm {
+    max-width: 400px !important;
+}
+
+@media (min-width: 700px) {
+    dialog {
+        --vertical-margin: 10vh;
+        min-height: 100px;
+        width: calc(100vw - 60px);
+        max-width: 640px;
+        margin: var(--vertical-margin) auto;
+        max-height: calc(100vh - var(--vertical-margin) * 2);
+    }
+}
+
+@media (max-width: 699px) {
+    dialog {
+        width: calc(100vw - 30px);
+    }
+}
+
+@media (max-width: 500px) {
+    dialog.large {
+        height: 100%;
+    }
+}
+
+dialog {
+    background-color: #eee;
+    color: #000;
+    box-shadow: 0 0 16px -4px #000000;
+    border-color: #aaa;
+    border-width: 4px 1px 1px 1px;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 0;
+}
+
+dialog + dialog {
+    box-shadow: none;
+}
+
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog > header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    background-color: #eee;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+dialog > header h3 {
+    margin: 8px 16px;
+}
+
+dialog > .content {
+    margin: 8px 16px 16px 16px;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+dialog button.close {
+    flex: 0 0 auto;
+    margin-left: auto;
+    cursor: pointer;
+    aspect-ratio: 1;
+    background: none;
+    align-self: stretch;
+    border-radius: 0 0 0 3px;
+}
+
+dialog > footer {
+    background-color: #eee;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    z-index: 1;
+    padding: 16px;
+}
